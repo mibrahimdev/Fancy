@@ -6,11 +6,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.github.mohamedisoliman.fancy.data.entities.Product
 import io.github.mohamedisoliman.fancy.domain.RetrieveProducts
+import io.github.mohamedisoliman.fancy.singleArgViewModelFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
+@ExperimentalCoroutinesApi
 class HomeViewModel(private val retrieveProducts: RetrieveProducts) : ViewModel() {
+
+
+    companion object {
+        val FACTORY = singleArgViewModelFactory(::HomeViewModel)
+    }
 
     private val productsList = MutableLiveData<List<Product>>()
     fun productsList(): LiveData<List<Product>> = productsList
@@ -22,16 +29,23 @@ class HomeViewModel(private val retrieveProducts: RetrieveProducts) : ViewModel(
     fun error(): LiveData<String> = error
 
     init {
-
+        initViews()
     }
 
-    @ExperimentalCoroutinesApi
-    fun initViews() {
+    private fun initViews() {
         viewModelScope.launch {
-            progress.postValue(true)
-            val list = retrieveProducts.productsFlow().toList()
-            productsList.postValue(list)
-            progress.postValue(false)
+            retrieveProducts
+                .productsFlow()
+                .onStart { progress.postValue(true) }
+                .onCompletion {
+                    progress.postValue(false)
+                    it?.let {
+                        error.postValue("Something wrong happened!")
+                    }
+                }
+                .collect {
+                    productsList.postValue(it)
+                }
         }
     }
 
