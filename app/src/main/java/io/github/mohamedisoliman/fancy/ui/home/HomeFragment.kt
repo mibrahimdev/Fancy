@@ -53,12 +53,6 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(activity)
             setHasFixedSize(true)
             adapter = productsAdapter
-            addItemDecoration(
-                DividerItemDecoration(
-                    activity,
-                    DividerItemDecoration.VERTICAL
-                )
-            )
         }
     }
 
