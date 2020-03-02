@@ -4,14 +4,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/appCompatImageView"
+            android:id="@+id/productImage"
             android:layout_width="0dp"
             android:layout_height="140dp"
             android:scaleType="centerCrop"
@@ -27,7 +29,7 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView">
+            app:layout_constraintTop_toBottomOf="@+id/productImage">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/productName"
@@ -36,7 +38,7 @@
                 android:layout_margin="8dp"
                 android:maxLines="1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 tools:text="@tools:sample/lorem" />
 
             <!--can add more -->
