@@ -1,4 +1,4 @@
-package io.github.mohamedisoliman.fancy.ui.ui.home
+package io.github.mohamedisoliman.fancy.ui.home
 
 import androidx.lifecycle.ViewModel
 

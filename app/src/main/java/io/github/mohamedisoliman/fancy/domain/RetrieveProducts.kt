@@ -15,7 +15,7 @@ class RetrieveProducts(private val productsRepo: ProductRepositoryContract) {
 
 
     @ExperimentalCoroutinesApi
-    suspend fun products(): Flow<Product> {
+    suspend fun execute(): Flow<Product> {
         return productsRepo.fetchProducts().asFlow()
             .flowOn(Dispatchers.IO)
             .filter { it.images != null && it.images.isNotEmpty() }
