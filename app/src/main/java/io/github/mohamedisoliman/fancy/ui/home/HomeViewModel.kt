@@ -10,6 +10,7 @@ import io.github.mohamedisoliman.fancy.singleArgViewModelFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @ExperimentalCoroutinesApi
 class HomeViewModel(private val retrieveProducts: RetrieveProducts) : ViewModel() {
@@ -43,8 +44,9 @@ class HomeViewModel(private val retrieveProducts: RetrieveProducts) : ViewModel(
                         error.postValue("Something wrong happened!")
                     }
                 }
+                .catch { Timber.e(it) }
                 .collect {
-                    productsList.postValue(it)
+                    if (it.isNotEmpty()) productsList.postValue(it)
                 }
         }
     }
