@@ -1,7 +1,8 @@
 package io.github.mohamedisoliman.fancy.ui.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import io.github.mohamedisoliman.fancy.R
 
 class HomeActivity : AppCompatActivity() {
 
