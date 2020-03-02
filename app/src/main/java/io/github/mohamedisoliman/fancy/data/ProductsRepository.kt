@@ -2,14 +2,14 @@ package io.github.mohamedisoliman.fancy.data
 
 import io.github.mohamedisoliman.fancy.data.entities.Product
 import io.github.mohamedisoliman.fancy.data.remote.DataKickRemote
-import retrofit2.http.GET
-import retrofit2.http.Path
+import io.github.mohamedisoliman.fancy.data.remote.Remote
 
 /**
  *
  * Created by Mohamed Ibrahim on 3/2/20.
  */
-class ProductsRepository(private val remote: DataKickRemote) : ProductRepositoryContract {
+class ProductsRepository(private val remote: DataKickRemote = Remote.dataKickRemote) :
+    ProductRepositoryContract {
 
     override suspend fun fetchProducts(): List<Product> = remote.fetchProducts()
 
