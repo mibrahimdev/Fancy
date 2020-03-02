@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
+import io.github.mohamedisoliman.fancy.R
 import io.github.mohamedisoliman.fancy.data.entities.Product
 import io.github.mohamedisoliman.fancy.databinding.ItemProductBinding
 
@@ -46,6 +48,10 @@ class ProductViewHolder(private val binding: ItemProductBinding) :
 
     fun bind(item: Product) {
         binding.productName.text = item.name
+        Picasso.get()
+            .load(item.randomImage())
+            .into(binding.productImage)
+
     }
 
 }

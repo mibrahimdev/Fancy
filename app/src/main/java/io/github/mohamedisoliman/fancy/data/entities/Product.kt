@@ -57,4 +57,10 @@ data class Product(
     val sugars: Int? = 0,
     @Json(name = "trans_fat")
     val transFat: Double? = 0.0
-)
+) {
+
+    fun randomImage(): String {
+        val keyword = listOf("water", "landscape", "sky")
+        return "https://source.unsplash.com/featured/?${keyword.random()},${keyword.random()}"
+    }
+}
