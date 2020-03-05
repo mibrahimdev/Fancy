@@ -13,11 +13,11 @@ class ProductsRepository(private val remote: DataKickRemote = Remote.dataKickRem
 
     override suspend fun fetchProducts(): List<Product> = remote.fetchProducts()
 
-    override suspend fun fetchProductDetails(id: Int) = remote.fetchProductDetails(id)
+    override suspend fun fetchProductDetails(id: Int): Product = remote.fetchProductDetails(id)
 
 }
 
 interface ProductRepositoryContract {
     suspend fun fetchProducts(): List<Product>
-    suspend fun fetchProductDetails(id: Int)
+    suspend fun fetchProductDetails(id: Int): Product
 }
