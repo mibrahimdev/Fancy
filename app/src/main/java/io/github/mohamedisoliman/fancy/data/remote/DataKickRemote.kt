@@ -43,6 +43,6 @@ interface DataKickRemote {
     @GET("items")
     suspend fun fetchProducts(): List<Product>
 
-    @GET("api/items/{id}")
-    suspend fun fetchProductDetails(@Path("id") id: Int): Product
+    @GET("items/{id}")
+    suspend fun fetchProductDetails(@Path("id") id: String): Product
 }
