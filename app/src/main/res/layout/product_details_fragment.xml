@@ -1,13 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.productdetails.ProductDetailsFragment">
+    android:fitsSystemWindows="false">
 
-    <TextView
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="60dp"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Light">
 
-</FrameLayout>
+        <include layout="@layout/collapsing_toolbar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include layout="@layout/product_content" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
