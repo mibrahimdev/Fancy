@@ -14,7 +14,10 @@ import io.github.mohamedisoliman.fancy.databinding.ItemProductBinding
  * Created by Mohamed Ibrahim on 3/2/20.
  */
 
-class ProductsAdapter : RecyclerView.Adapter<ProductViewHolder>() {
+class ProductsAdapter(
+    private val onItemClicked: (Product) -> Unit
+) :
+    RecyclerView.Adapter<ProductViewHolder>() {
 
     private val products = mutableListOf<Product>()
 
@@ -27,6 +30,7 @@ class ProductsAdapter : RecyclerView.Adapter<ProductViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
 
         return ProductViewHolder(
+            onItemClicked,
             ItemProductBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -43,10 +47,14 @@ class ProductsAdapter : RecyclerView.Adapter<ProductViewHolder>() {
 
 }
 
-class ProductViewHolder(private val binding: ItemProductBinding) :
+class ProductViewHolder(
+    private val onItemClicked: (Product) -> Unit,
+    private val binding: ItemProductBinding
+) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: Product) {
+        binding.root.setOnClickListener { onItemClicked(item) }
         binding.productName.text = item.name
         Picasso.get()
             .load(item.randomImage())

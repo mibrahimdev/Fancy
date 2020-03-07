@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/homeFragment">
 
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="io.github.mohamedisoliman.fancy.ui.home.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_homeFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="io.github.mohamedisoliman.fancy.ui.productdetails.ProductDetailsFragment"
+        android:label="ProductDetailsFragment">
+        <argument
+            android:name="productDetails"
+            app:argType="io.github.mohamedisoliman.fancy.data.entities.ProductDetails" />
+    </fragment>
 </navigation>

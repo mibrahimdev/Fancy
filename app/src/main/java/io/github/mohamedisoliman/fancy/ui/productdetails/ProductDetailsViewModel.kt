@@ -2,12 +2,13 @@ package io.github.mohamedisoliman.fancy.ui.productdetails
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import io.github.mohamedisoliman.fancy.data.entities.ProductDetails
 import io.github.mohamedisoliman.fancy.domain.RetrieveProductDetails
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class ProductDetailsViewModel(
-    private val productId: Int,
+    private val productDetails: ProductDetails,
     private val retrieveProductDetails: RetrieveProductDetails
 ) : ViewModel() {
 
@@ -18,10 +19,11 @@ class ProductDetailsViewModel(
 
     private fun showProductDetails() {
         viewModelScope.launch {
-            retrieveProductDetails.retrieveProductDetails(productId)
-                .collect {
+            if (productDetails.id != null)
+                retrieveProductDetails.retrieveProductDetails(productDetails.id)
+                    .collect {
 
-                }
+                    }
         }
     }
 
