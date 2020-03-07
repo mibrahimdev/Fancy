@@ -25,10 +25,6 @@ import timber.log.Timber
 @ExperimentalCoroutinesApi
 class HomeFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = HomeFragment()
-    }
-
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: HomeFragmentBinding
     private lateinit var productsAdapter: ProductsAdapter

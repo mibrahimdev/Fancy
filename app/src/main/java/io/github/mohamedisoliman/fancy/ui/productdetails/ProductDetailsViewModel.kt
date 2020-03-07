@@ -21,7 +21,7 @@ class ProductDetailsViewModel(
 
 
     private val detailsLiveData = MutableLiveData<ProductDetails>()
-    fun getDetailsLiveData() = detailsLiveData
+    fun getDetailsLiveData(): LiveData<ProductDetails> = detailsLiveData
 
     private val error = MutableLiveData<String>()
     fun error(): LiveData<String> = error
