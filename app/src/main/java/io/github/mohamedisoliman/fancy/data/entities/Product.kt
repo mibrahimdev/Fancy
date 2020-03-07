@@ -66,6 +66,7 @@ data class Product(
 }
 
 fun Product.toProductDetails(): ProductDetails = ProductDetails(
+    id = gtin14,
     name = name,
     description = """
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
