@@ -5,8 +5,6 @@ plugins {
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
 }
-val lifecycle_version = "2.2.0"
-val room_version = "2.2.4"
 
 android {
     compileSdkVersion(29)
@@ -44,6 +42,12 @@ android {
 }
 
 dependencies {
+
+    val lifecycle_version = "2.2.0"
+    val room_version = "2.2.4"
+    val retrofit = "2.7.2"
+    val okHttp = "4.4.0"
+
     implementation(
         fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar")))
     )
@@ -71,10 +75,10 @@ dependencies {
 
 
     //network
-    implementation("com.squareup.retrofit2:retrofit:2.7.2")
-    implementation("com.squareup.retrofit2:converter-moshi:2.7.2")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.4.0")
-    implementation("com.squareup.okhttp3:okhttp:4.4.0")
+    implementation("com.squareup.retrofit2:retrofit:$retrofit")
+    implementation("com.squareup.retrofit2:converter-moshi:$retrofit")
+    implementation("com.squareup.okhttp3:logging-interceptor:$okHttp")
+    implementation("com.squareup.okhttp3:okhttp:$okHttp")
 
     //arch components
     implementation("androidx.lifecycle:lifecycle-extensions:$lifecycle_version")
